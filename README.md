@@ -1,3 +1,12 @@
+in settings pages -> deploy from gh-pages. 
+
+change action to the one of:
+https://github.com/BillyCool/GitHub-Pages-WASM-Template
+
+
+
+
+
 
 # BlazorWASMwGithubPages
 This is a template of a Blazor WebAssembly project with Github Actions to deploy the Blazor WASM site to Github Pages

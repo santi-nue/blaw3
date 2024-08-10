@@ -18,15 +18,20 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      - run: cd MyBlazorApp
-      - run: dotnet restore
-      - run: dotnet build
-      - run: dotnet publish ./MyBlazorApp -c:Release -o:publish -p:GHPages=true
+        
+      # Install .NET WASM Build Tools
+      - name: Install .NET WASM Build Tools
+        run: dotnet workload install wasm-tools
+          
+      # Publish the Blazor WASM project
+      - name: Publish .NET Core Project
+        run: dotnet publish ./MyBlazorApp/MyBlazorApp.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages
-          FOLDER: publish/wwwroot
+          FOLDER: dist/Web/wwwroot
       
       
       

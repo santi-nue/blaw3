@@ -1,0 +1,37 @@
+
+# This is ".github/workflows/gh-pages.yml" file.
+
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - root
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v4
+
+      # Install .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+
+      - name: Commit wwwroot to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          BRANCH: gh-pages
+          FOLDER: publish/wwwroot
+      
+      
+      
+    
+
+
+
+
+
+
